@@ -25,6 +25,8 @@ from datasets import dataset_factory
 from nets import nets_factory
 from preprocessing import preprocessing_factory
 
+import time
+
 slim = tf.contrib.slim
 
 tf.app.flags.DEFINE_integer(
@@ -174,20 +176,43 @@ def main(_):
       # This ensures that we make a single pass over all of the data.
       num_batches = math.ceil(dataset.num_samples / float(FLAGS.batch_size))
 
-    if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
-      checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
-    else:
-      checkpoint_path = FLAGS.checkpoint_path
+    # if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
+    #   checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
+    # else:
+    #   checkpoint_path = FLAGS.checkpoint_path
+    #
+    # tf.logging.info('Evaluating %s' % checkpoint_path)
+    #
+    # slim.evaluation.evaluate_once(
+    #     master=FLAGS.master,
+    #     checkpoint_path=checkpoint_path,
+    #     logdir=FLAGS.eval_dir,
+    #     num_evals=num_batches,
+    #     eval_op=list(names_to_updates.values()) + print_ops,
+    #     variables_to_restore=variables_to_restore)
 
-    tf.logging.info('Evaluating %s' % checkpoint_path)
+    while True:
+      start = time.time()
+      tf.logging.info("Starting evaluation at " + time.strftime(
+        "%Y-%m-%d-%H:%M:%S", time.localtime()))
 
-    slim.evaluation.evaluate_once(
+      if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
+        checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
+      else:
+        checkpoint_path = FLAGS.checkpoint_path
+
+      tf.logging.info('Evaluating %s' % checkpoint_path)
+
+      slim.evaluation.evaluate_once(
         master=FLAGS.master,
         checkpoint_path=checkpoint_path,
         logdir=FLAGS.eval_dir,
         num_evals=num_batches,
-        eval_op=list(names_to_updates.values()) + print_ops,
+        eval_op=list(names_to_updates.values()),
         variables_to_restore=variables_to_restore)
+      time_to_next_eval = start + FLAGS.eval_interval_secs - time.time()
+      if time_to_next_eval > 0:
+        time.sleep(time_to_next_eval)
 
 
 if __name__ == '__main__':
