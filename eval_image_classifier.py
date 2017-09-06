@@ -81,6 +81,9 @@ tf.app.flags.DEFINE_float(
 tf.app.flags.DEFINE_integer(
     'eval_image_size', None, 'Eval image size')
 
+tf.app.flags.DEFINE_integer(
+    'eval_interval_secs', 0, 'Eval image size')
+
 FLAGS = tf.app.flags.FLAGS
 
 
