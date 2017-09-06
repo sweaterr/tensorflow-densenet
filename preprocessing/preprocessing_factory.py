@@ -21,6 +21,7 @@ from __future__ import print_function
 import tensorflow as tf
 
 from preprocessing import densenet_preprocessing
+from preprocessing import basic_preprocessing
 
 slim = tf.contrib.slim
 
@@ -45,6 +46,7 @@ def get_preprocessing(name, is_training=False):
       'densenet121': densenet_preprocessing,
       'densenet161': densenet_preprocessing,
       'densenet169': densenet_preprocessing,
+      'basic': basic_preprocessing
   }
 
   if name not in preprocessing_fn_map:
