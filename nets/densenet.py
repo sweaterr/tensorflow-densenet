@@ -161,6 +161,16 @@ def densenet(inputs,
 
       return net, end_points
 
+def densenet40(inputs, num_classes=1000, is_training=True, reuse=None):
+  return densenet(inputs,
+                  num_classes=num_classes,
+                  reduction=0.5,
+                  growth_rate=12,
+                  num_filters=16,
+                  num_layers=[12,12,12],
+                  is_training=is_training,
+                  reuse=reuse,
+                  scope='densenet40')
 
 def densenet121(inputs, num_classes=1000, is_training=True, reuse=None):
   return densenet(inputs,

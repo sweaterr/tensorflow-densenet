@@ -117,6 +117,10 @@ tf.app.flags.DEFINE_float(
     'momentum', 0.9,
     'The momentum for the MomentumOptimizer and RMSPropOptimizer.')
 
+tf.app.flags.DEFINE_bool(
+    'use_nesterov', False,
+    'use_nesterov.')
+
 tf.app.flags.DEFINE_float('rmsprop_decay', 0.9, 'Decay term for RMSProp.')
 
 #######################
@@ -296,7 +300,8 @@ def _configure_optimizer(learning_rate):
     optimizer = tf.train.MomentumOptimizer(
         learning_rate,
         momentum=FLAGS.momentum,
-        name='Momentum')
+        name='Momentum',
+        use_nesterov=FLAGS.use_nesterov)
   elif FLAGS.optimizer == 'rmsprop':
     optimizer = tf.train.RMSPropOptimizer(
         learning_rate,

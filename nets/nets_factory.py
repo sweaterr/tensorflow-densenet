@@ -26,12 +26,14 @@ from nets import densenet
 slim = tf.contrib.slim
 
 networks_map = {
+        'densenet40' : densenet.densenet40,
         'densenet121': densenet.densenet121,
         'densenet161': densenet.densenet161,
         'densenet169': densenet.densenet169,
         }
 
 arg_scopes_map = {
+        'densenet40' : densenet.densenet_arg_scope,
         'densenet121': densenet.densenet_arg_scope,
         'densenet161': densenet.densenet_arg_scope,
         'densenet169': densenet.densenet_arg_scope,
