@@ -179,7 +179,7 @@ def densenet(inputs,
         inputs=net,
         num_outputs=num_classes,
         activation_fn=tf.identity,
-        weights_initializer=tf.variance_scaling_initializer,
+        weights_initializer=tf.contrib.layers.variance_scaling_initializer(),
         scope="logits")
 
       end_points = slim.utils.convert_collection_to_dict(
