@@ -22,14 +22,15 @@ import functools
 import tensorflow as tf
 
 from nets import densenet
+from nets import densenet_bc
 
 slim = tf.contrib.slim
 
 networks_map = {
         'densenet40' : densenet.densenet40,
-        'densenet121': densenet.densenet121,
-        'densenet161': densenet.densenet161,
-        'densenet169': densenet.densenet169,
+        'densenet121': densenet_bc.densenet121,
+        'densenet161': densenet_bc.densenet161,
+        'densenet169': densenet_bc.densenet169,
         }
 
 arg_scopes_map = {

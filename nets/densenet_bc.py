@@ -24,21 +24,17 @@ from __future__ import division
 from __future__ import print_function
 
 import tensorflow as tf
-import numpy as np
 
 slim = tf.contrib.slim
 
 
-
 @slim.add_arg_scope
-def _conv(inputs, num_filters, kernel_size, dropout_rate=None,
+def _conv(inputs, num_filters, kernel_size, stride=1, dropout_rate=None,
           scope=None, outputs_collections=None):
   with tf.variable_scope(scope, 'xx', [inputs]) as sc:
     net = slim.batch_norm(inputs)
     net = tf.nn.relu(net)
-    net = slim.conv2d(net, num_filters, kernel_size,
-                      activation_fn=tf.identity,
-                      weights_initializer=tf.random_normal_initializer(stddev=np.sqrt(2.0/9/num_filters)))
+    net = slim.conv2d(net, num_filters, kernel_size)
 
     if dropout_rate:
       net = tf.nn.dropout(net)
@@ -46,33 +42,15 @@ def _conv(inputs, num_filters, kernel_size, dropout_rate=None,
     net = slim.utils.collect_named_outputs(outputs_collections, sc.name, net)
 
   return net
-
-@slim.add_arg_scope
-def _conv_for_trans(inputs, num_filters, kernel_size, dropout_rate=None,
-          scope=None, outputs_collections=None):
-  with tf.variable_scope(scope, 'xx', [inputs]) as sc:
-    net = slim.batch_norm(inputs)
-    net = tf.nn.relu(net)
-    net = slim.conv2d(net, num_filters, kernel_size,
-                      activation_fn=tf.nn.relu)
-
-    if dropout_rate:
-      net = tf.nn.dropout(net)
-
-    net = slim.utils.collect_named_outputs(outputs_collections, sc.name, net)
-
-  return net
-
 
 
 @slim.add_arg_scope
 def _conv_block(inputs, num_filters, scope=None, outputs_collections=None):
   with tf.variable_scope(scope, 'conv_blockx', [inputs]) as sc:
-    # net = _conv(net, num_filters*4, 1, scope='x1')
     net = inputs
-    net = _conv(net, num_filters, 3, scope='x1')
-    net = tf.concat([net, inputs], axis=3)
-    # net = _conv(net, num_filters, 3, scope='x1')
+    net = _conv(net, num_filters*4, 1, scope='x1')
+    net = _conv(net, num_filters, 3, scope='x2')
+    net = tf.concat([inputs, net], axis=3)
 
     net = slim.utils.collect_named_outputs(outputs_collections, sc.name, net)
 
@@ -104,7 +82,7 @@ def _transition_block(inputs, num_filters, compression=1.0,
   num_filters = int(num_filters * compression)
   with tf.variable_scope(scope, 'transition_blockx', [inputs]) as sc:
     net = inputs
-    net = _conv_for_trans(net, num_filters, 1, scope='blk')
+    net = _conv(net, num_filters, 1, scope='blk')
 
     net = slim.avg_pool2d(net, 2)
 
@@ -113,16 +91,16 @@ def _transition_block(inputs, num_filters, compression=1.0,
   return net, num_filters
 
 
-def densenet(inputs,
-             num_classes=1000,
-             reduction=None,
-             growth_rate=None,
-             num_filters=None,
-             num_layers=None,
-             dropout_rate=None,
-             is_training=True,
-             reuse=None,
-             scope=None):
+def densenet_bc(inputs,
+                num_classes=1000,
+                reduction=None,
+                growth_rate=None,
+                num_filters=None,
+                num_layers=None,
+                dropout_rate=None,
+                is_training=True,
+                reuse=None,
+                scope=None):
   assert reduction is not None
   assert growth_rate is not None
   assert num_filters is not None
@@ -143,11 +121,10 @@ def densenet(inputs,
       net = inputs
 
       # initial convolution
-      net = slim.conv2d(net, num_filters, 3, stride=1, scope='conv1',
-                        activation_fn=tf.identity,
-                        weights_initializer=tf.random_normal_initializer(stddev=np.sqrt(2.0 / 9 / num_filters))
-                        )
-
+      net = slim.conv2d(net, num_filters, 7, stride=2, scope='conv1')
+      net = slim.batch_norm(net)
+      net = tf.nn.relu(net)
+      net = slim.max_pool2d(net, 3, stride=2, padding='SAME')
 
       # blocks
       for i in range(num_dense_blocks - 1):
@@ -172,15 +149,9 @@ def densenet(inputs,
         net = tf.nn.relu(net)
         net = tf.reduce_mean(net, [1,2], name='global_avg_pool', keep_dims=True)
 
-      # net = slim.conv2d(net, num_classes, 1,
-      #                   biases_initializer=tf.zeros_initializer(),
-      #                   scope='logits')
-      net = tf.contrib.layers.fully_connected(
-        inputs=net,
-        num_outputs=num_classes,
-        activation_fn=tf.identity,
-        weights_initializer=tf.variance_scaling_initializer,
-        scope="logits")
+      net = slim.conv2d(net, num_classes, 1,
+                        biases_initializer=tf.zeros_initializer(),
+                        scope='logits')
 
       end_points = slim.utils.convert_collection_to_dict(
           end_points_collection)
@@ -190,16 +161,45 @@ def densenet(inputs,
 
       return net, end_points
 
-def densenet40(inputs, num_classes=1000, is_training=True, reuse=None):
-  return densenet(inputs,
-                  num_classes=num_classes,
-                  reduction=0.0,
-                  growth_rate=12,
-                  num_filters=16,
-                  num_layers=[12,12,12],
-                  is_training=is_training,
-                  reuse=reuse,
-                  scope='densenet40')
+
+def densenet121(inputs, num_classes=1000, is_training=True, reuse=None):
+  return densenet_bc(inputs,
+                     num_classes=num_classes,
+                     reduction=0.5,
+                     growth_rate=32,
+                     num_filters=64,
+                     num_layers=[6,12,24,16],
+                     is_training=is_training,
+                     reuse=reuse,
+                     scope='densenet121')
+densenet121.default_image_size = 224
+
+
+def densenet161(inputs, num_classes=1000, is_training=True, reuse=None):
+  return densenet_bc(inputs,
+                     num_classes=num_classes,
+                     reduction=0.5,
+                     growth_rate=48,
+                     num_filters=96,
+                     num_layers=[6,12,36,24],
+                     is_training=is_training,
+                     reuse=reuse,
+                     scope='densenet161')
+densenet161.default_image_size = 224
+
+
+def densenet169(inputs, num_classes=1000, is_training=True, reuse=None):
+  return densenet_bc(inputs,
+                     num_classes=num_classes,
+                     reduction=0.5,
+                     growth_rate=32,
+                     num_filters=64,
+                     num_layers=[6,12,32,32],
+                     is_training=is_training,
+                     reuse=reuse,
+                     scope='densenet169')
+densenet169.default_image_size = 224
+
 
 def densenet_arg_scope(weight_decay=1e-4,
                        batch_norm_decay=0.99,
