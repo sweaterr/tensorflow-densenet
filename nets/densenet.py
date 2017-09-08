@@ -160,7 +160,6 @@ def densenet(inputs,
         net, num_filters = _transition_block(net, num_filters,
                                              compression=compression,
                                              scope='transition_block' + str(i+1))
-
       net, num_filters = _dense_block(
               net, num_layers[-1], num_filters,
               growth_rate,
@@ -175,12 +174,18 @@ def densenet(inputs,
       # net = slim.conv2d(net, num_classes, 1,
       #                   biases_initializer=tf.zeros_initializer(),
       #                   scope='logits')
-      net = tf.contrib.layers.fully_connected(
-        inputs=net,
-        num_outputs=num_classes,
-        activation_fn=tf.identity,
-        weights_initializer=tf.contrib.layers.variance_scaling_initializer(),
-        scope="logits")
+      # net = tf.contrib.layers.fully_connected(
+      #   inputs=net,
+      #   num_outputs=num_classes,
+      #   activation_fn=tf.identity,
+      #   weights_initializer=tf.contrib.layers.variance_scaling_initializer(),
+      #   scope="logits")
+      #
+      net = tf.layers.dense(inputs=net,
+                            units=num_classes,
+                            activation=tf.identity,
+                            kernel_initializer=tf.contrib.layers.variance_scaling_initializer(),
+                            use_bias=False)
 
       end_points = slim.utils.convert_collection_to_dict(
           end_points_collection)
