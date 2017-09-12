@@ -23,6 +23,7 @@ import tensorflow as tf
 from preprocessing import densenet_preprocessing
 from preprocessing import basic_preprocessing
 from preprocessing import cifarnet_preprocessing
+from preprocessing import inception_preprocessing
 from preprocessing import densenet_cifar10_preprocessing
 
 slim = tf.contrib.slim
@@ -50,7 +51,8 @@ def get_preprocessing(name, is_training=False):
       'densenet169': densenet_preprocessing,
       'basic': basic_preprocessing,
       'cifar10': cifarnet_preprocessing,
-      'cifar10_2': densenet_cifar10_preprocessing
+      'cifar10_2': densenet_cifar10_preprocessing,
+      'imagenet' : inception_preprocessing
   }
 
   if name not in preprocessing_fn_map:
