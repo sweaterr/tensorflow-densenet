@@ -102,3 +102,5 @@ ENV/
 
 .idea
 data/
+flower_model/
+flower_photos/

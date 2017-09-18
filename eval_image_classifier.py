@@ -30,7 +30,7 @@ import time
 slim = tf.contrib.slim
 
 tf.app.flags.DEFINE_integer(
-    'batch_size', 100, 'The number of samples in each batch.')
+    'batch_size', 32, 'The number of samples in each batch.')
 
 tf.app.flags.DEFINE_integer(
     'max_num_batches', None,
@@ -159,8 +159,8 @@ def main(_):
     # Define the metrics:
     names_to_values, names_to_updates = slim.metrics.aggregate_metric_map({
         'Accuracy': slim.metrics.streaming_accuracy(predictions, labels),
-        'Recall_5': slim.metrics.streaming_recall_at_k(
-            logits, labels, 5),
+        # 'Recall_5': slim.metrics.streaming_recall_at_k(
+        #     logits, labels, 5),
     })
 
     # Print the summaries to screen.
@@ -206,12 +206,16 @@ def main(_):
 
       tf.logging.info('Evaluating %s' % checkpoint_path)
 
+      session_config = tf.ConfigProto()
+      session_config.gpu_options.allow_growth = True
+
       slim.evaluation.evaluate_once(
         master=FLAGS.master,
         checkpoint_path=checkpoint_path,
         logdir=FLAGS.eval_dir,
         num_evals=num_batches,
         eval_op=list(names_to_updates.values()),
+        session_config=session_config,
         variables_to_restore=variables_to_restore)
       time_to_next_eval = start + FLAGS.eval_interval_secs - time.time()
       if time_to_next_eval > 0:
