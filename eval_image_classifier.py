@@ -25,10 +25,12 @@ from datasets import dataset_factory
 from nets import nets_factory
 from preprocessing import preprocessing_factory
 
+import time
+
 slim = tf.contrib.slim
 
 tf.app.flags.DEFINE_integer(
-    'batch_size', 100, 'The number of samples in each batch.')
+    'batch_size', 32, 'The number of samples in each batch.')
 
 tf.app.flags.DEFINE_integer(
     'max_num_batches', None,
@@ -78,6 +80,9 @@ tf.app.flags.DEFINE_float(
 
 tf.app.flags.DEFINE_integer(
     'eval_image_size', None, 'Eval image size')
+
+tf.app.flags.DEFINE_integer(
+    'eval_interval_secs', 0, 'Eval image size')
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -154,8 +159,8 @@ def main(_):
     # Define the metrics:
     names_to_values, names_to_updates = slim.metrics.aggregate_metric_map({
         'Accuracy': slim.metrics.streaming_accuracy(predictions, labels),
-        'Recall_5': slim.metrics.streaming_recall_at_k(
-            logits, labels, 5),
+        # 'Recall_5': slim.metrics.streaming_recall_at_k(
+        #     logits, labels, 5),
     })
 
     # Print the summaries to screen.
@@ -174,20 +179,47 @@ def main(_):
       # This ensures that we make a single pass over all of the data.
       num_batches = math.ceil(dataset.num_samples / float(FLAGS.batch_size))
 
-    if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
-      checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
-    else:
-      checkpoint_path = FLAGS.checkpoint_path
+    # if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
+    #   checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
+    # else:
+    #   checkpoint_path = FLAGS.checkpoint_path
+    #
+    # tf.logging.info('Evaluating %s' % checkpoint_path)
+    #
+    # slim.evaluation.evaluate_once(
+    #     master=FLAGS.master,
+    #     checkpoint_path=checkpoint_path,
+    #     logdir=FLAGS.eval_dir,
+    #     num_evals=num_batches,
+    #     eval_op=list(names_to_updates.values()) + print_ops,
+    #     variables_to_restore=variables_to_restore)
 
-    tf.logging.info('Evaluating %s' % checkpoint_path)
+    while True:
+      start = time.time()
+      tf.logging.info("Starting evaluation at " + time.strftime(
+        "%Y-%m-%d-%H:%M:%S", time.localtime()))
 
-    slim.evaluation.evaluate_once(
+      if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
+        checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
+      else:
+        checkpoint_path = FLAGS.checkpoint_path
+
+      tf.logging.info('Evaluating %s' % checkpoint_path)
+
+      session_config = tf.ConfigProto()
+      session_config.gpu_options.allow_growth = True
+
+      slim.evaluation.evaluate_once(
         master=FLAGS.master,
         checkpoint_path=checkpoint_path,
         logdir=FLAGS.eval_dir,
         num_evals=num_batches,
-        eval_op=list(names_to_updates.values()) + print_ops,
+        eval_op=list(names_to_updates.values()),
+        session_config=session_config,
         variables_to_restore=variables_to_restore)
+      time_to_next_eval = start + FLAGS.eval_interval_secs - time.time()
+      if time_to_next_eval > 0:
+        time.sleep(time_to_next_eval)
 
 
 if __name__ == '__main__':

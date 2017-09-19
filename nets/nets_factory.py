@@ -21,17 +21,29 @@ import functools
 
 import tensorflow as tf
 
+from nets import resnet_v1
 from nets import densenet
+from nets import densenet_bc
 
 slim = tf.contrib.slim
 
 networks_map = {
-        'densenet121': densenet.densenet121,
-        'densenet161': densenet.densenet161,
-        'densenet169': densenet.densenet169,
+        'resnet_v1_50': resnet_v1.resnet_v1_50,
+        'resnet_v1_101': resnet_v1.resnet_v1_101,
+        'resnet_v1_152': resnet_v1.resnet_v1_152,
+        'resnet_v1_200': resnet_v1.resnet_v1_200,
+        'densenet40' : densenet.densenet40,
+        'densenet121': densenet_bc.densenet121,
+        'densenet161': densenet_bc.densenet161,
+        'densenet169': densenet_bc.densenet169,
         }
 
 arg_scopes_map = {
+        'resnet_v1_50': resnet_v1.resnet_arg_scope,
+        'resnet_v1_101': resnet_v1.resnet_arg_scope,
+        'resnet_v1_152': resnet_v1.resnet_arg_scope,
+        'resnet_v1_200': resnet_v1.resnet_arg_scope,
+        'densenet40' : densenet.densenet_arg_scope,
         'densenet121': densenet.densenet_arg_scope,
         'densenet161': densenet.densenet_arg_scope,
         'densenet169': densenet.densenet_arg_scope,

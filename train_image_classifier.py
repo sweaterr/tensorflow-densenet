@@ -117,6 +117,10 @@ tf.app.flags.DEFINE_float(
     'momentum', 0.9,
     'The momentum for the MomentumOptimizer and RMSPropOptimizer.')
 
+tf.app.flags.DEFINE_bool(
+    'use_nesterov', False,
+    'use_nesterov.')
+
 tf.app.flags.DEFINE_float('rmsprop_decay', 0.9, 'Decay term for RMSProp.')
 
 #######################
@@ -296,7 +300,8 @@ def _configure_optimizer(learning_rate):
     optimizer = tf.train.MomentumOptimizer(
         learning_rate,
         momentum=FLAGS.momentum,
-        name='Momentum')
+        name='Momentum',
+        use_nesterov=FLAGS.use_nesterov)
   elif FLAGS.optimizer == 'rmsprop':
     optimizer = tf.train.RMSPropOptimizer(
         learning_rate,
@@ -552,7 +557,8 @@ def main(_):
     # Merge all summaries together.
     summary_op = tf.summary.merge(list(summaries), name='summary_op')
 
-
+    session_config = tf.ConfigProto()
+    session_config.gpu_options.allow_growth = True
     ###########################
     # Kicks off the training. #
     ###########################
@@ -567,6 +573,7 @@ def main(_):
         log_every_n_steps=FLAGS.log_every_n_steps,
         save_summaries_secs=FLAGS.save_summaries_secs,
         save_interval_secs=FLAGS.save_interval_secs,
+        session_config=session_config,
         sync_optimizer=optimizer if FLAGS.sync_replicas else None)
 
 

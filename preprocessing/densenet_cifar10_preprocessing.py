@@ -37,14 +37,14 @@ import tensorflow as tf
 
 slim = tf.contrib.slim
 
-_R_MEAN = 123.68
-_G_MEAN = 116.78
-_B_MEAN = 103.94
+_R_MEAN = 124.71990264
+_G_MEAN = 122.37736514
+_B_MEAN = 113.25710293
 
 _SCALE_FACTOR = 0.017
 
-_RESIZE_SIDE_MIN = 256
-_RESIZE_SIDE_MAX = 512
+_RESIZE_SIDE_MIN = 40
+_RESIZE_SIDE_MAX = 50
 
 
 def _crop(image, offset_height, offset_width, crop_height, crop_width):
