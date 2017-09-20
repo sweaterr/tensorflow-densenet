@@ -22,9 +22,7 @@ Follow the instruction [TensorFlow-Slim Models](https://github.com/tensorflow/mo
 
 ```
 $ DATA_DIR=/tmp/data/flowers
-$ python download_and_convert_data.py \
-    --dataset_name=flowers \
-    --dataset_dir="${DATA_DIR}"
+$ python download_and_convert_data.py --dataset_name=flowers --dataset_dir="${DATA_DIR}"
 ```
 
 #### Training a model from scratch.
