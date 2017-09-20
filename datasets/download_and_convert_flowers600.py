@@ -89,6 +89,8 @@ def _get_filenames_and_classes(dataset_dir):
   photo_filenames = []
   for directory in directories:
     for filename in os.listdir(directory):
+      if "jpg" not in filename:
+        continue
       path = os.path.join(directory, filename)
       photo_filenames.append(path)
 
