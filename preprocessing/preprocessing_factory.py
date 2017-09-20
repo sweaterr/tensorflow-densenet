@@ -49,6 +49,7 @@ def get_preprocessing(name, is_training=False):
       'densenet121': densenet_preprocessing,
       'densenet161': densenet_preprocessing,
       'densenet169': densenet_preprocessing,
+      'inception_v3': inception_preprocessing,
       'basic': basic_preprocessing,
       'cifar10': cifarnet_preprocessing,
       'cifar10_2': densenet_cifar10_preprocessing,

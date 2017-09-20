@@ -21,13 +21,16 @@ import functools
 
 import tensorflow as tf
 
+from nets import inception
 from nets import resnet_v1
 from nets import densenet
 from nets import densenet_bc
 
+
 slim = tf.contrib.slim
 
 networks_map = {
+        'inception_v3': inception.inception_v3,
         'resnet_v1_50': resnet_v1.resnet_v1_50,
         'resnet_v1_101': resnet_v1.resnet_v1_101,
         'resnet_v1_152': resnet_v1.resnet_v1_152,
@@ -39,6 +42,7 @@ networks_map = {
         }
 
 arg_scopes_map = {
+        'inception_v3': inception.inception_v3_arg_scope,
         'resnet_v1_50': resnet_v1.resnet_arg_scope,
         'resnet_v1_101': resnet_v1.resnet_arg_scope,
         'resnet_v1_152': resnet_v1.resnet_arg_scope,
