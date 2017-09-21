@@ -37,6 +37,7 @@ import numpy as np
 
 import tensorflow as tf
 import urllib
+from urllib.request import urlretrieve
 from scipy.io import loadmat
 
 _NUM_SHARDS = 5
@@ -171,7 +172,7 @@ def download_file(url, dataset_dir, dest=None):
   if not dest:
     dest = dataset_dir + url.split('/')[-1]
   if not os.path.exists(dest):
-    urllib.urlretrieve(url, dest)
+    urlretrieve(url, dest)
 
 def run(dataset_dir):
   """Runs the download and conversion operation.
