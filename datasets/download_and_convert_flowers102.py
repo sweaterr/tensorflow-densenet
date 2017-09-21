@@ -171,6 +171,7 @@ def _convert_dataset(split_name, file_and_classid, dataset_dir):
 def download_file(url, dataset_dir, dest=None):
   if not dest:
     dest = dataset_dir + url.split('/')[-1]
+  print(dest)
   if not os.path.exists(dest):
     urlretrieve(url, dest)
 
