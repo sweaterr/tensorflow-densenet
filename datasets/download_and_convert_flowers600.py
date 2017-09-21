@@ -37,7 +37,7 @@ import tensorflow as tf
 from datasets import dataset_utils
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 800
+_NUM_VALIDATION = 5000
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
