@@ -196,9 +196,9 @@ def run(dataset_dir):
   setid = loadmat(dataset_dir + '/setid.mat')
 
   # The .mat file is 1-indexed, so we subtract one to match Caffe's convention.
-  # train <-> test swap
-  idx_train = setid['tstid'][0] - 1
-  idx_test = setid['trnid'][0] - 1
+  # train <-> test swaptrnid
+  idx_train = setid['trnid'][0] - 1
+  idx_test = setid['tstid'][0] - 1
   idx_valid = setid['valid'][0] - 1
 
   # Read .mat file containing image labels.
