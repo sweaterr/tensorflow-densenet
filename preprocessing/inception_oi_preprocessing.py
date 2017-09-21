@@ -299,6 +299,6 @@ def preprocess_image(image, height, width,
     ValueError: if user does not provide bounding box
   """
   if is_training:
-    return preprocess_for_train(image, height, width)
+    return preprocess_for_train(image, height, width, bbox, fast_mode)
   else:
     return preprocess_for_eval(image, height, width)
