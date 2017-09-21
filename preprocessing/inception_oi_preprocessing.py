@@ -229,8 +229,8 @@ def preprocess_for_train(image, height, width, bbox,
 
     tf.summary.image('final_distorted_image',
                      tf.expand_dims(distorted_image, 0))
-    distorted_image = tf.subtract(distorted_image, 0.5)
-    distorted_image = tf.multiply(distorted_image, 2.0)
+    distorted_image = tf.multiply(distorted_image, 1.0 / 127.5)
+    distorted_image = tf.subtract(distorted_image, 1.0)
     return distorted_image
 
 
