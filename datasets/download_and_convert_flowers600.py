@@ -124,7 +124,7 @@ def _convert_dataset(split_name, filenames, class_names_to_ids, dataset_dir):
     image_reader = ImageReader()
 
     with tf.Session('') as sess:
-
+      num_images = 0
       for shard_id in range(_NUM_SHARDS):
         output_filename = _get_dataset_filename(
             dataset_dir, split_name, shard_id)
@@ -142,15 +142,15 @@ def _convert_dataset(split_name, filenames, class_names_to_ids, dataset_dir):
             try:
               height, width = image_reader.read_image_dims(sess, image_data)
             except:
-              print(filenames[i])
-              raise Exception
+              continue
             class_name = os.path.basename(os.path.dirname(filenames[i]))
             class_id = class_names_to_ids[class_name]
 
             example = dataset_utils.image_to_tfexample(
                 image_data, b'jpg', height, width, class_id)
             tfrecord_writer.write(example.SerializeToString())
-
+            num_images += 1
+  print("# of images:" + " ".join([str(num_images), split_name]))
   sys.stdout.write('\n')
   sys.stdout.flush()
 
