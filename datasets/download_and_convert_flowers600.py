@@ -142,7 +142,7 @@ def _convert_dataset(split_name, filenames, class_names_to_ids, dataset_dir):
             try:
               height, width = image_reader.read_image_dims(sess, image_data)
             except:
-              print(filenames)
+              print(filenames[i])
               raise Exception
             class_name = os.path.basename(os.path.dirname(filenames[i]))
             class_id = class_names_to_ids[class_name]
