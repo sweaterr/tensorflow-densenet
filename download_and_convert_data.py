@@ -40,6 +40,7 @@ from datasets import download_and_convert_cifar10
 from datasets import download_and_convert_flowers
 from datasets import download_and_convert_flowers102
 from datasets import download_and_convert_flowers600
+from datasets import download_and_convert_flowers480
 from datasets import download_and_convert_mnist
 
 FLAGS = tf.app.flags.FLAGS
@@ -69,6 +70,8 @@ def main(_):
     download_and_convert_flowers102.run(FLAGS.dataset_dir)
   elif FLAGS.dataset_name == 'flowers600':
     download_and_convert_flowers600.run(FLAGS.dataset_dir)
+  elif FLAGS.dataset_name == 'flowers480':
+    download_and_convert_flowers480.run(FLAGS.dataset_dir)
   elif FLAGS.dataset_name == 'mnist':
     download_and_convert_mnist.run(FLAGS.dataset_dir)
   else:

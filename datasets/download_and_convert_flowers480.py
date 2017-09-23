@@ -86,16 +86,25 @@ def _get_filenames_and_classes(dataset_dir):
       directories.append(path)
       class_names.append(filename)
 
+  # photo_filenames = []
+  # for directory in directories:
+  #   for filename in os.listdir(directory):
+  #     if "jpg" not in filename:
+  #       continue
+  #     path = os.path.join(directory, filename)
+  #     photo_filenames.append(path)
+  flower_clean = os.path.join(dataset_dir, 'result')
   photo_filenames = []
-  for directory in directories:
-    for filename in os.listdir(directory):
-      if "jpg" not in filename:
-        continue
-      image_num = int(filename.split(".")[-2].split("_")[-1])
-      if image_num > 200:
-        continue
-      path = os.path.join(directory, filename)
-      photo_filenames.append(path)
+  for flower in os.listdir(flower_clean):
+    flower_clean_list = os.path.join(flower_clean, flower)
+    with open(flower_clean_list) as f:
+      for filename in f:
+        image_path = os.path.join(dataset_dir, filename.strip())
+        if "jpg" not in filename:
+          continue
+        if os.path.exists(image_path):
+          photo_filenames.append(image_path)
+        photo_filenames.append(os.path.join(dataset_dir, filename.strip()))
 
   return photo_filenames, sorted(class_names)
 
