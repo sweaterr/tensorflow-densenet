@@ -23,6 +23,7 @@ from datasets import flowers
 from datasets import flowers102
 from datasets import flowers102org
 from datasets import flowers600
+from datasets import flowers480
 from datasets import imagenet
 from datasets import mnist
 
