@@ -104,7 +104,6 @@ def _get_filenames_and_classes(dataset_dir):
           continue
         if os.path.exists(image_path):
           photo_filenames.append(image_path)
-        photo_filenames.append(os.path.join(dataset_dir, filename.strip()))
 
   return photo_filenames, sorted(class_names)
 

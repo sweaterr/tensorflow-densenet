@@ -32,6 +32,7 @@ datasets_map = {
     'flowers102': flowers102,
     'flowers102org': flowers102org,
     'flowers600': flowers600,
+    'flowers480': flowers480,
     'imagenet': imagenet,
     'mnist': mnist,
 }
