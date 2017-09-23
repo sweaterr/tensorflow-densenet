@@ -1,0 +1,416 @@
+0:Viburnum sargentii sterile flower
+1:abelia grandiflora
+2:abeliophyllum distichum flower
+3:abutilon hybridum
+4:acalypha reptans
+5:aceriphyllum rossii
+6:achillea millefolium cv
+7:achimenes spp
+8:adenium obesum
+9:adonis amurensis
+10:aerides japonicum
+11:agapanthus africanus
+12:ageratum houstonianum
+13:ajuga decumbens
+14:ajuga reptans
+15:albizia julibrissin flower
+16:allamanda cathartica
+17:allium giganteum
+18:allium tuberosum
+19:alstroemeria aurantiaca
+20:althaea rosea
+21:amaranthus tricolor
+22:ammobium alatum
+23:anemone coronaria
+24:anigozanthos spp
+25:anthurium andraeanum
+26:anthurium scherzerianum
+27:antirrhinum majus
+28:aquilegia buergeriana var oxysepala
+29:aquilegia flabellata var pumila
+30:aquilegia spp
+31:argyranthemum frutescens
+32:arisaema amurense
+33:armeria plantaginea
+34:asclepias curassavica
+35:aster koraiensis
+36:aster novi-belgii
+37:aster pilosus
+38:aster spathulifolius
+39:aster spp
+40:aster tataricus
+41:astilbe arendsii
+42:astilbe chinensis var davidii
+43:begonia semperflorens
+44:begonia x hiemalis
+45:belamcanda chinensis
+46:bellis perennis
+47:berberis koreana flower
+48:bird of paradise
+49:bletilla striata
+50:borago officinalis
+51:bougainvillea glabra
+52:brassia spp
+53:brassica oleracea var. acephala
+54:brunfelsia australis
+55:buttercup
+56:buxus microphylla flower
+57:calanthe bicolor
+58:calanthe discolor
+59:calceolaria herbeohybrida
+60:calendula officinalis
+61:callicarpa dichotoma flower
+62:callistemon citrinus
+63:callistephus chinensis
+64:caltha palustris var membranacea
+65:calystegia japonica
+66:camellia japonica
+67:campanula glomerata var dahurica
+68:campanula medium
+69:campanula poscharskyana
+70:campanula punctata
+71:campsis grandiflora
+72:canna x generalis
+73:cargenia jasminoides flower
+74:carthamus tinctorius
+75:caryopteris incana flower
+76:catalpa ovata flower
+77:catharanthus roseus
+78:cattleya spp
+79:celosia cristata
+80:centaurea spp
+81:cercis chinensis
+82:cestrum nocturnum
+83:chaenomeles sinensis
+84:chaenomeles speciosa
+85:chamelaucium uncinatum
+86:chelidonium majus
+87:chrysanthemum boreale
+88:chrysanthemum indicum
+89:chrysanthemum morifolium
+90:chrysanthemum pacificum
+91:chrysanthemum zawadskii var latilobum
+92:chrysosplenium grayanum
+93:cirsium japonicum
+94:clarkia amoena
+95:clematis spp
+96:cleodendron trichoromum flower
+97:clerodendrum thomsonae
+98:clivia miniata
+99:coleus spp
+100:commelina communis
+101:convallaria keiskei
+102:convallaria majalis
+103:coreopsideae
+104:cornus alba flower
+105:cornus controversa flower
+106:cornus florida flower
+107:cornus kousa flower
+108:cornus officinalis flower
+109:corydalis speciosa
+110:corylopsis coreana
+111:cosmos bipinnatus
+112:cosmos sulphureus
+113:cotinus coggygria flower
+114:crataegus pinnatifida flower
+115:crinum asiaticum var japonicum
+116:crocus sativus
+117:crossandra infundibuliformis
+118:cuphea hyssopifolia
+119:cyclamen persicum
+120:cymbidium goeringii
+121:cymbidium kanran
+122:cymbidium spp
+123:cypripedium japonicum
+124:cypripedium macranthum
+125:dahlia spp
+126:dandelion
+127:daphne odora
+128:daphniphyllum macropodum flower
+129:delphinium hybridum
+130:dendranthema grandiflorum
+131:dendrobium phalaenopsis
+132:dendrobium spp
+133:dianthus barbatus
+134:dianthus caryophyllus
+135:dianthus sinensis
+136:dianthus superbus var longicalycinus
+137:digitalis purpurea
+138:diospyros kaki flower
+139:dorotheanthus bellidiformis
+140:draba nemorosa var hebecarpa
+141:echinops ritro
+142:eichhornia crassipes
+143:elaeocarpus sylvestris flower
+144:elsholtzia ciliata
+145:epidendrum spp
+146:epilobium angustifolium
+147:epimedium koreanum flower
+148:erigeron annuus
+149:eriobotrya japonica flower
+150:eschscholzia californica
+151:eucharis grandiflora
+152:euphorbia milii var splendens
+153:euphorbia pulcherrima
+154:eustoma grandiflorum
+155:evening primrose
+156:exacum affine
+157:farfugium japonicum flower
+158:felicia amelloides
+159:forsythia koreana
+160:freesia hybrida
+161:fuchsia x hybrida
+162:gaillardia pulchella
+163:galinsoga ciliata
+164:gazania splendens
+165:gelsemium sempervirens
+166:gentiana spp
+167:gentiana squarrosa
+168:gerbera jamesonii
+169:gladiolus
+170:gladiolus x gandavensis
+171:glechoma hederacea
+172:gomphrena globosa
+173:gypsophila paniculata
+174:hamamelis japonica flower
+175:hedychium
+176:helianthus annuus
+177:helichrysum bracteatum
+178:heliconia spp
+179:heliotropium arborescens
+180:heloniopsis orientalis
+181:hemerocallis dumortieri
+182:hemerocallis fulva
+183:hepatica asiatica
+184:hibiscus rosa-sinensis
+185:hibiscus syriacus
+186:hippeastrum hygridum
+187:hosta longipes
+188:hosta plantaginea
+189:houttuynia cordata
+190:hyacinthus orientalis
+191:hydrangea macrophylla
+192:hydrangea serrata for acuminate flower
+193:hylomecon vernale
+194:hymenocallis speciosa
+195:hypericum ascyron
+196:hypericum spp
+197:ilex rotunda flower
+198:impatiens balsamina
+199:impatiens new guinea
+200:impatiens noli-tangere
+201:impatiens textori
+202:impatiens walleriana
+203:inula britannica var chinensis
+204:iris ensata
+205:iris ensata var spontanea
+206:iris sanguinea
+207:iris savatieri
+208:iris x germanica
+209:iris x hollandica
+210:isotoma axillaris
+211:ixora chinensis
+212:jasminum nudiflorum
+213:jasminum polyanthum
+214:jasminum sambac
+215:justicia brandegeana
+216:kalanchoe spp
+217:kerria japonica
+218:kerria japonica plena
+219:kniphofia uvaria
+220:koelreuteria paniculata flower
+221:korean dandelion
+222:lagerstroemia indica
+223:lampranthus spectabilis
+224:lamprocapnos spectabilis
+225:lantana camara
+226:lathyrus odoratus
+227:lavandula spp
+228:leontopodium coreanum
+229:leucadendron spp
+230:leucanthemum paludosum cv north pole
+231:leucanthemum x superbum
+232:leucojum aestivum
+233:liatris spicata
+234:ligularia fischeri
+235:ligustrum japonicum flower
+236:ligustrum obtusifolium
+237:lilium asiatic hybrids
+238:lilium callosum
+239:lilium hansonii
+240:lilium longiflorum
+241:lilium oriental hybrids
+242:lilium tigrinum
+243:lilium tsingtauense
+244:limonium hybridum
+245:limonium sinuatum
+246:lindera obtusiloba flower
+247:liriodendron rulipifera flower
+248:liriope platyphylla
+249:lobate campion
+250:lobelia erinus
+251:lobularia maritima
+252:lonicera japonica
+253:lonicera maackii flower
+254:lupinus hybrida
+255:lychnis wilfordii
+256:lycoris radiata
+257:lysimachia clethroides
+258:lysimachia nummularia
+259:lysimachia vulgaris var davurica
+260:lythrum anceps
+261:magnolia denudata
+262:magnolia grandiflora flower
+263:magnolia kobus flower
+264:magnolia obovata flower
+265:magnolia sieboldii flower
+266:matthiola incana
+267:melampodium paludosum
+268:miltonia spp
+269:minosa pudica
+270:mirabilis jalapa
+271:monarda spp
+272:morning glory
+273:muscari spp
+274:myosotis scorpioides
+275:narcissus pseudonarcissus
+276:narcissus tazetta
+277:nelumbo nucifera
+278:nematanthus gregarius
+279:neofinetia falcata
+280:nerium indicum
+281:nymphaea spp
+282:oenothera speciosa
+283:oncidium spp
+284:ornithogalum spp
+285:osmanthus fragrans var aurantiacus
+286:osteospermum spp
+287:oxalis corniculata
+288:oxalis spp
+289:pachysandra terminalis
+290:pachystachys lutea
+291:paederia scandens
+292:paentas lanceolata
+293:paeonia lactiflora
+294:paeonia suffruticosa
+295:papaver rhoeas
+296:papaver spp
+297:paphiopedilum spp
+298:passiflora caerulea
+299:patrinia scabiosaefolia
+300:pelargonium x hortorum
+301:petasites japonicus flower
+302:petunia x hybrida
+303:phalaenopsis spp
+304:phlox paniculata
+305:phlox subulata
+306:physostegia virginiana
+307:pittosporum tobira flower
+308:platycodon grandiflorus
+309:plumeria acuminata
+310:polygonatum odoratum flower
+311:polygonum capitatum
+312:polygonum thunbergii
+313:portulaca grandiflora
+314:potentilla fragarioides
+315:primula malacoides
+316:primula obconica
+317:primula sieboldii
+318:primula x polyantha
+319:prunella vulgaris var lilacina
+320:prunus armeriaca var ansu flower
+321:prunus mume
+322:prunus padus flower
+323:prunus persica flower
+324:prunus serrulata var spontanea
+325:prunus tomentosa flower
+326:prunus yedoensis
+327:pulsatilla koreana
+328:punica granatum flower
+329:purple coneflower
+330:quamoclit angulata
+331:ranunculus asiaticus
+332:rhododendron mucronulatum
+333:rhododendron schlippenbachii
+334:rhododendron spp
+335:rhododendron yedoense var poukhanense
+336:rhodohypoxis baurii
+337:rhodotypos scandens flower
+338:robinia pseudoacacia flower
+339:rosa multiflora
+340:rosa rugosa flower
+341:rose
+342:rudbeckia hirta
+343:saintpaulia ionantha
+344:salvia splendens
+345:sambucus williamsii var coreana flower
+346:sandersonia aurantiaca
+347:sarracenia spp
+348:saxifraga stolonifera
+349:scabiosa spp
+350:schlumbergera truncata
+351:scilla spp
+352:scutellaria strigillosa
+353:sedum kamtschaticum
+354:sedum sarmentosum flower
+355:sedum spectabile
+356:senecio cruentus
+357:siam tulip
+358:silene armeria
+359:sinningia speciosa
+360:solanum nigrum flower
+361:solidago virga-aurea
+362:solidaster luteus
+363:sophora japonica flower
+364:sorbus commixta flower
+365:spiraea prunifolia
+366:spiranthes sinensis
+367:stauntonia hexaphylla flower
+368:stellera rosea
+369:stephanandra incisa flower
+370:stephanotis floribunda
+371:streptocarpus saxorum
+372:swainsona formosa
+373:syringa vulgaris
+374:tacitus bellus
+375:tagetes erecta
+376:tagetes lucida
+377:tagetes patula
+378:thalictrum actaefolium
+379:thunbergia spp
+380:tibouchina urvilleana
+381:tilia amurensis flower
+382:tillandsia cyanea
+383:toad lily
+384:torenia fournieri
+385:tradescantia reflexa
+386:trichosanthes kirilowii
+387:trifolium incarnatum
+388:trifolium pratense
+389:trifolium repens
+390:trigonotis peduncularis
+391:tropaeolum majus
+392:tulipa x gesneriana
+393:typha orientalis
+394:vanda spp
+395:veratrum patulum
+396:verbena x hybrida
+397:veronica polita var lilacina
+398:veronicastrum sibiricum
+399:viburnum awabuki flower
+400:viburnum carlesii flower
+401:victoria amazonica
+402:vinca major cv variegata
+403:vinca minor
+404:viola mandshurica
+405:viola tricolor
+406:viola variegata
+407:vitex rotundifolia flower
+408:weigela florida
+409:wisteria floribunda
+410:youngia sonchifolia
+411:yucca filamentosa
+412:zantedeschia hybrida
+413:zephyranthes candina
+414:zinnia angustifolia
+415:zinnia elegans

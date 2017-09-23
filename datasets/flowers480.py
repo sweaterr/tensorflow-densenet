@@ -33,7 +33,7 @@ _FILE_PATTERN = 'flowers600_%s_*.tfrecord'
 
 SPLITS_TO_SIZES = {'train': 35843, 'validation': 4997}
 
-_NUM_CLASSES = 416
+_NUM_CLASSES = 480
 
 _ITEMS_TO_DESCRIPTIONS = {
     'image': 'A color image of varying size.',
