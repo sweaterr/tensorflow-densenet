@@ -31,9 +31,9 @@ slim = tf.contrib.slim
 
 _FILE_PATTERN = 'flowers600_%s_*.tfrecord'
 
-SPLITS_TO_SIZES = {'train': 97549, 'validation': 4997}
+SPLITS_TO_SIZES = {'train': 35843, 'validation': 4997}
 
-_NUM_CLASSES = 480
+_NUM_CLASSES = 416
 
 _ITEMS_TO_DESCRIPTIONS = {
     'image': 'A color image of varying size.',
