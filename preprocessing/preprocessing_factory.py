@@ -26,7 +26,7 @@ from preprocessing import cifarnet_preprocessing
 from preprocessing import inception_oi_preprocessing
 from preprocessing import inception_preprocessing
 from preprocessing import densenet_cifar10_preprocessing
-
+from preprocessing import vgg_preprocessing
 slim = tf.contrib.slim
 
 
@@ -50,6 +50,7 @@ def get_preprocessing(name, is_training=False):
       'densenet121': densenet_preprocessing,
       'densenet161': densenet_preprocessing,
       'densenet169': densenet_preprocessing,
+      'resnet_v1_50': vgg_preprocessing,
       'inception_v3': inception_oi_preprocessing,
       'basic': basic_preprocessing,
       'cifar10': cifarnet_preprocessing,
